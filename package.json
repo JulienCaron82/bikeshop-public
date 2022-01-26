@@ -1,0 +1,25 @@
+{
+  "name": "bikeshop",
+  "version": "1.0.0",
+  "description": "La Capsule Week2 project, using express+sessions, bootstrap and Stripe",
+  "private": true,
+  "author": "Julien Caron",
+  "engines": {
+    "node": "14.17.6"
+  },
+  "scripts": {
+    "start": "node ./bin/www",
+    "local": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^14.3.0",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "express-session": "^1.17.2",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "stripe": "^8.184.0"
+  }
+}

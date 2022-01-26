@@ -1,0 +1,98 @@
+body{
+    font-family: 'Darker Grotesque', sans-serif;
+} 
+
+a, a:hover{
+    color: white;
+}
+
+#picture-header {
+    background-image: url("./assets/bike-background.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 150px;
+    margin-bottom: 20px;
+}
+
+#breadcrum-area {
+    margin: 20px;
+}
+
+#container {
+    margin: 20px 0 0;
+}
+
+.card-img-top {
+    margin-top: 20px;
+    max-width: 600px;
+}
+
+.basket-img{
+    width: 170px;
+}
+
+.item .icon {
+    width: 100%;
+}
+
+.breadcrumb {
+    margin: 0 20px;
+    font-size: 20px;
+}
+
+.breadcrumb a, .breadcrumb a:focus {
+    font-style: normal;
+    color: blue;
+}
+
+#no-article {
+    color: red;
+    margin: 50px 50px;
+}
+
+#basket-table {
+    margin: 50px 0 0;
+}
+
+.basket-icon {
+    width: auto;
+    max-width:100%;
+    height: auto;
+    max-height: 100px;
+}
+
+#basket-table tbody {
+    background-color: #FAFAFA;
+}
+
+#basket-table tfoot {
+    border: 0;
+}
+
+.btn {
+    margin: 5px;
+}
+
+.qty-input {
+    min-width: 100px;
+    max-width: 50%;
+    border: 1px solid lightgray;
+    padding-left: 5px;
+}
+
+.qty-input:focus {
+    outline: 0;
+}
+
+.qty-input:hover {
+    border: 2px solid black;
+}
+
+.card {
+    margin-top: 10px;
+}
+
+#checkout {
+    text-align: right;
+    right: 20px;
+}

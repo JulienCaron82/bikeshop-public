@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Darker+Grotesque&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/8c8edc72f3.js" crossorigin="anonymous"></script>
+    
+    <title>BikeShop - Basket</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+
+<!-- header -->
+<div class="container-fluid">
+  <div id="header-area" class="row">            
+      <nav class="header col-12 navbar navbar-light bg-dark">
+          <a class="navbar" href="/">
+              <img src="/images/bike-logo.svg" width="50" height="50" class="logo" alt="">
+              The Bike Shop Experience
+          </a>
+      </nav>
+  </div>
+
+  <nav id="breadcrum-area" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item" aria-current="page"><a href="/">Shop</a></li>
+      <li class="breadcrumb-item active">Basket</li>
+    </ol>
+  </nav>
+
+  <h1>Basket</h1>
+
+  <div class="row">
+    <div class="col col-12 px-0" id="basket" onsubmit="return addNote(this);">
+      <% if ((! dataBasket) || (! dataBasket.items) || (dataBasket.items.length == 0)) { %>
+      <div id="no-article">
+        <h2>No article in the basket</h2>
+      </div>
+      <% } else { %>
+      <table class="table" id="basket-table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Picture</th>
+            <th scope="col">Model</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+            <th scope="col">Total</th>
+            <th scope="col">Suppr</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% 
+          var totalBasket=0;
+          for (let i=0; i<dataBasket.items.length; i++) { 
+            let item = dataBasket.items[i];
+          %>
+
+          <tr class="basket-row">
+            <th scope="row"><%= i %></th>
+            <td><img class="basket-icon" src="./images/<%= item.icon %>" alt="Bike"></td>
+            <td><%= item.name %></td>
+            <td>
+              <div class=row>
+                <form method="post" action="/sync-qty-basket">
+                  <input type="hidden" name="index" value="<%= i %>">
+                  <input class="qty-input" type="number" min=0 name="qty" value=<%= item.qty %>>
+                  <button type="submit" class="btn btn-outline-primary btn-sm">
+                    <i class="fas fa-sync-alt"></i>
+                  </button>
+                </form>
+                  
+              </div>
+            </td>
+            <td class="price"><%= item.price %>€</td>
+            <td class="totalItem"><%= item.total %>€</td>
+            <td>
+              <a href="/del-item-basket?button=deleteOK&index=<%= i %>" class="btn btn-outline-primary trash">
+                <i class="far fa-trash-alt"></i>
+              </a>
+            </td>
+          </tr>
+
+          <% } %>
+        </tbody>
+
+        <tfoot>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Total Basket:</td>
+            <td><%= dataBasket.total %>€</td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+      
+      <div id="checkout">
+        <form method="post" action="/create-checkout-session">
+          <button type="submit" id="btn-checkout" class="btn btn-outline-primary" value="Checkout">Checkout</button>
+        </form>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</div>
+
+ <!-- scripts -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+<!-- <script src="/javascripts/script-basket.js"></script> -->
+</body>
+</html>
